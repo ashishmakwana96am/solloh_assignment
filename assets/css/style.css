@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+}
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+body {
+  font-family: "Cormorant";
+  scroll-behavior: smooth;
+}
+:root {
+  --color-black: #000000;
+}
+
+/* ---surgery--- start */
+.surgery {
+  margin: 50px 0;
+}
+.surgery_main {
+  position: relative;
+  transition: all 1.3s;
+  overflow: hidden;
+  z-index: 1;
+}
+.surgery_data {
+  overflow: hidden;
+}
+.surgery_main:hover {
+  cursor: pointer;
+}
+.surgery_main:hover .surgery_img {
+  transform: scale(1.2);
+}
+.surgery_main:hover .surgery_title {
+  display: none;
+}
+.surgery_main:hover .surgery_content {
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+.surgery_main:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.surgery_main::after {
+  position: absolute;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  z-index: 2;
+}
+.surgery_img {
+  width: 100%;
+  object-fit: cover;
+  transition: all 1.3s;
+}
+.surgery_title {
+  font-size: 24px;
+  color: #fff;
+  line-height: 26px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  z-index: 2;
+}
+.surgery_content h2 {
+  font-size: 24px;
+  line-height: 26px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+.surgery_content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 0;
+  transition: all 0.9s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+  text-align: center;
+}
+.surgery_content p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 20px;
+}
+.surgery_content .btn {
+  border: 0;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  position: relative;
+  transition: all 0.5s;
+  padding: 0;
+  padding-bottom: 4px;
+}
+.surgery_content .btn::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  width: 0;
+  height: 2px;
+  border-radius: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.surgery_content .btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+  width: 100%;
+}
+/* ---surgery--- end */
+
+/* ---herosection start */
+.hero-sec {
+  margin: 50px 0;
+  position: relative;
+}
+.video_data video {
+  width: 100%;
+  height: 500px;
+  left: 50%;
+  max-width: none !important;
+  min-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+.video-container::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+}
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: auto;
+  transform: translateY(-50%);
+  color: white;
+}
+.hero-content h2 {
+  font-size: 56px;
+  line-height: 60px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.play-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background: #eb2055;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.play-btn:before,
+.play-btn:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: #eb2055;
+  transition: all 200ms;
+}
+
+.play-btn:before {
+  width: 45px;
+  height: 45px;
+  z-index: 0;
+  animation: pulse-border 1.1s ease-out infinite;
+}
+.play-btn:after {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+.play-btn span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  color: white;
+}
+
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes pulse-border {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-content h2 {
+    font-size: 46px;
+    line-height: 48px;
+  }
+}
+
+@media (max-width: 992px) {
+  .surgery_main {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-content h2 {
+    font-size: 35px;
+    line-height: 38px;
+  }
+}
+
+/* ---herosection end */

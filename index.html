@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solloh Assignment</title>
+    <!-- --animation  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- --icon-- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- --style link-- -->
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- --herosection--start -->
+    <section class="hero-sec">
+        <div class="video-container">
+          <video id="hero-video" autoplay muted loop>
+            <source src="assets/images/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div> 
+      <div class="container">
+        <div class="hero-content">
+          <h2 data-aos="fade-up">Welcome to B+A</h2>
+          <h2 data-aos="fade-up">Medical Center</h2>
+          <a
+            id="play-btn"
+            class="video-play-button play-btn"
+            href="#"
+            data-aos="fade-up"
+          >
+            <span><i class="fas fa-pause"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- --herosection--end -->
+
+    <!-- ---surgery--section start -->
+    <section class="surgery">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="surgery_main">
+              <div class="surgery_data" data-aos="zoom-out">
+                <img src="assets/images/im1.avif" alt="" class="surgery_img" />
+                <h3 class="surgery_title">Microneedling</h3>
+              </div>
+              <div class="surgery_content">
+                <h2>Microneedling</h2>
+                <p>
+                  Microneedling helps produce collagen and elasticity to your
+                  skin. Additionally, it reduces the appearance of fine lines,
+                  wrinkles, hyper pigmentation, uneven skin tone, acne scars,
+                  traumatic scars and stretch marks.
+                </p>
+                <button class="btn">Read More about Microneedling</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="surgery_main">
+              <div class="surgery_data" data-aos="zoom-out">
+                <img src="assets/images/im2.avif" alt="" class="surgery_img" />
+                <h3 class="surgery_title">Halo Laser</h3>
+              </div>
+              <div class="surgery_content">
+                <h2>Halo Laser</h2>
+                <p>
+                  At Austin Plastic Surgery Institute, we strive to offer the
+                  most cutting-edge technology. Halo by Sciton is one of the
+                  newest lasers being used in the industry to treat a variety of
+                  skin conditions. The hybrid fractional laser has been approved
+                  by the FDA to treat a variety of conditions, and it erases
+                  fine lines and wrinkles, lightens pigmentation, and is
+                  effective in treating acne scars.
+                </p>
+                <button class="btn">Read More about Halo Laser</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="surgery_main">
+              <div class="surgery_data" data-aos="zoom-out">
+                <img src="assets/images/im3.avif" alt="" class="surgery_img" />
+                <h3 class="surgery_title">BBL</h3>
+              </div>
+              <div class="surgery_content">
+                <h2>BBL</h2>
+                <p>
+                  Are you looking for younger, more refreshed and rejuvenated
+                  skin? Forever Young BBL is an innovative technology that
+                  uniquely delivers broadband light therapy targeting the signs
+                  of aging and sun damage.
+                </p>
+                <button class="btn">Read More about BBL</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="surgery_main">
+              <div class="surgery_data" data-aos="zoom-out">
+                <img src="assets/images/im4.avif" alt="" class="surgery_img" />
+                <h3 class="surgery_title">Injectables</h3>
+              </div>
+              <div class="surgery_content">
+                <h2>Injectables</h2>
+                <p>
+                  Austin Plastic Surgery Institute offers a wide array of
+                  injectable treatments, including and , designed to help reduce
+                  the appearance of facial wrinkles and fine lines for our
+                  clients in Austin, TX.
+                </p>
+                <button class="btn">Read More about Injectables</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ---surgery--section end -->
+
+    <!-- ---script -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      AOS.init({
+        offset: 80,
+        delay: 100,
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true,
+        mirror: false,
+        anchorPlacement: "top-bottom",
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("hero-video");
+        const playBtn = document.getElementById("play-btn");
+        const icon = playBtn.querySelector("i");
+
+        playBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (video.paused) {
+            video.play();
+            icon.classList.remove("fa-play");
+            icon.classList.add("fa-pause");
+          } else {
+            video.pause();
+            icon.classList.remove("fa-pause");
+            icon.classList.add("fa-play");
+          }
+        });
+      });
+    </script>
+  </body> 
+</html>
