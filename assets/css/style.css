@@ -150,7 +150,7 @@ body {
 
 /* ---herosection start */
 .hero-sec {
-  padding: 120px 0;
+  padding: 95px 0;
   position: relative;
 }
 .video_data video {
@@ -1101,18 +1101,17 @@ max-width: 80px;
 .sub-menu li a ,.sub-menu li{
   padding:  12px;
   transition: all 0.5s;
-
   position: relative; 
   width: 100%;
 }
-.sub-menu li a ,.sub-menu li{
+.sub-menu li a ,.sub-menu li ,.subsub_menu_link{
   transition: all 0.5s;
 }
-.sub-menu li:hover ,.sub-menu li a:hover{
+.sub-menu li:hover {
   background: #1a5a76;
   color: white;
 }
-.sub-menu li:hover a{
+.sub-menu li:hover .submenu_link ,.sub-menu .subsub-menu :hover .subsub_menu_link ,.sub-menu li:hover .down-errow{
   color: #fff;
 }
 .down-errow{
@@ -1130,9 +1129,15 @@ max-width: 80px;
   min-width: 180px;
   background-color: #fff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  /* opacity: 0;
-  visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   transform: translateY(10px);
   transition: all 0.5s;
 }
+.sub-menu li:hover .subsub-menu{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* --intractive navbar dropdown end */
