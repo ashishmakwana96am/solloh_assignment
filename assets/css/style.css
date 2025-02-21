@@ -150,7 +150,7 @@ body {
 
 /* ---herosection start */
 .hero-sec {
-  margin: 50px 0;
+  padding: 120px 0;
   position: relative;
 }
 .video_data video {
@@ -1000,3 +1000,139 @@ video {
   font-weight: 600;
 }
 /* champion success end */
+
+/* ---resize header --start */
+.navbar{
+  background-color: #000;
+}
+.navbar-brand img{
+width: 100%;
+max-width: 80px;
+}
+
+.phone-holder a{
+  padding: 14px 30px;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: white !important;
+  color: #000 !important;
+}
+.navbar .nav-item .nav-link{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.navbar {
+  transition: all 0.3s ease-in-out;
+}
+.navbar.scrolled {
+  padding: 5px 0;
+  background-color: rgba(0, 0, 0, 0.9); 
+}
+.navbar-brand img {
+  transition: all 0.3s ease-in-out;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000; 
+  padding: 5px 0; 
+  transition: all 0.5s ease-in-out;
+}
+
+/* Logo default size */
+.navbar-brand img {
+  max-width: 80px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Smaller navbar when scrolled */
+.navbar.scrolled {
+  padding: 5px 0;
+  background-color: rgba(0, 0, 0, 0.9); 
+}
+
+.navbar-brand img.small {
+  max-width: 60px; 
+}
+
+.navbar-brand img.large {
+  max-width: 80px; 
+}
+
+/* ---resize header --end */
+
+/* --intractive navbar dropdown start */
+.navbar-nav .nav-item {
+  position: relative;
+  transition: all 0.5s;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.5s;
+}
+
+.nav-item:hover .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.sub-menu li{
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+.sub-menu li a ,.sub-menu li{
+  padding:  12px;
+  transition: all 0.5s;
+
+  position: relative; 
+  width: 100%;
+}
+.sub-menu li a ,.sub-menu li{
+  transition: all 0.5s;
+}
+.sub-menu li:hover ,.sub-menu li a:hover{
+  background: #1a5a76;
+  color: white;
+}
+.sub-menu li:hover a{
+  color: #fff;
+}
+.down-errow{
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  font-size: 12px;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.subsub-menu{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 180px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* opacity: 0;
+  visibility: hidden; */
+  transform: translateY(10px);
+  transition: all 0.5s;
+}
+/* --intractive navbar dropdown end */
