@@ -3,6 +3,10 @@
 @media (max-width: 1199px) {
 }
 @media (max-width: 1024px) {
+  .hero-content h2 {
+    font-size: 46px;
+    line-height: 48px;
+  }
   .resume_header {
     gap: 39px;
     padding: 30px 48px;
@@ -31,9 +35,16 @@
   .skill-title {
     padding: 12px 20px;
   }
-  .navbar-toggler {
-    background-color: #fff;
+  .surgery_main {
+    margin-bottom: 30px;
   }
+}
+@media (max-width: 640px) {
+  .hero-content h2 {
+    font-size: 35px;
+    line-height: 38px;
+  }
+
 }
 @media (max-width: 991px) {
   .sub-menu .sub_item:hover,
@@ -62,9 +73,44 @@
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.3s ease;
   }
-  .navbar-nav{
-    margin-top: 20px;
+
+  .submenu_link{
+    display: block;
   }
+.navbar-collapse ,.sub-menu ,.subsub-menu ,.innersub_menu ,.navbar-collapse a{
+  background-color: #E5E5E5 !important;
+}
+
+.navbar-collapse .nav-link {
+  padding: 12px;
+}
+.navbar-collapse{
+  overflow-y: auto;
+  max-height: 100vh;
+  position: absolute;
+  width: 100vw;
+  top: 100%;
+  left: 0;
+}
+.navbar-collapse a{
+  color: #000 !important;
+}
+.sub-menu li .submenu_link, .subsub_menu_link, .innersub_menu li .innermenu_link{
+  padding: 10px;
+}
+.sub-menu ,.subsub-menu ,.innersub_menu {
+  transform: translateY(0);
+  padding-left: 20px;
+}
+.nav-link-arrow{
+  display: block;
+}
+.sub-menu li {
+  border-bottom: none;
+}
+.navbar-nav{
+  padding-top: 22px;
+}
 }
 @media (max-width: 768px) {
   .resume_header {
