@@ -125,3 +125,37 @@ document.addEventListener("DOMContentLoaded", function () {
     this.classList.toggle("is-active");
   });
 });
+
+
+// --------milestone --
+function updateTimeline() {
+  let section = document.querySelector(".milestone_timeline");
+  let progressBar = document.querySelector(".timeline-progress");
+  let milestones = document.querySelectorAll(".milestone");
+
+  let rect = section.getBoundingClientRect();
+  let inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+  if (inViewport) {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    let sectionTop = section.offsetTop;
+    let sectionHeight = section.offsetHeight;
+    let scrollPercentage = ((scrollTop - sectionTop) / sectionHeight) * 100;
+
+    progressBar.style.height = `${Math.min(100, Math.max(0, scrollPercentage))}%`;
+
+    milestones.forEach(milestone => {
+      let milestoneRect = milestone.getBoundingClientRect();
+      if (milestoneRect.top < window.innerHeight * 0.75) {
+        milestone.classList.add("in-view");
+      } else {
+        milestone.classList.remove("in-view");
+      }
+    });
+  } else {
+    progressBar.style.height = "0%"; // Reset when out of view
+  }
+}
+
+window.addEventListener("scroll", updateTimeline);
+updateTimeline();

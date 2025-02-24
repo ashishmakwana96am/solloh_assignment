@@ -26,6 +26,10 @@
     font-size: 14px;
     line-height: 16px;
   }
+  .milestone_timeline h2{
+    font-size: 32px;
+    line-height: 36px;
+  }
 }
 @media (max-width: 992px) {
   .resumer_name h1 {
@@ -44,7 +48,29 @@
     font-size: 35px;
     line-height: 38px;
   }
-
+  .milestone-tab .nav-pills{
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .tab-main{
+    flex-direction: column;
+  }
+  .milestone-tab .nav-pills .nav-link{
+    border-bottom: 1px solid white;
+    border-right: none;
+  }
+  .milestone-tab .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    border-bottom-color: #d4ff9d;
+  }
+  .milestone-tab .tab-content{
+    padding:0 20px;
+  }
+  .milestone_timeline h2{
+    font-size: 24px;
+    line-height: 26px;
+  }
 }
 @media (max-width: 991px) {
   .sub-menu .sub_item:hover,
@@ -111,6 +137,9 @@
 .navbar-nav{
   padding-top: 22px;
 }
+.fadeout-grid{
+  grid-template-columns: repeat(2, 1fr);
+ }
 }
 @media (max-width: 768px) {
   .resume_header {
@@ -127,6 +156,10 @@
   }
   .skill-title {
     max-width: 278px;
+  }
+  .fadeout_title h2{
+    font-size: 30px;
+    line-height: 34px;
   }
 }
 @media (max-width: 767px) {
@@ -161,6 +194,38 @@
   .skills ul {
     flex-wrap: wrap;
   }
+  .milestone .milestone-left{
+    width: 20%;
+  }
+  .milestone{
+    gap: 16px;
+  }
+  .milestone-center{
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .milestone .milestone-right{
+    width: 72%;
+  }
+
+  .timeline-line{
+    left: 26%;
+  }
+  .milestone-right{
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .milestone-left{
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .milestone-end{
+    text-align: start;
+    padding-left: 50px;
+  }
+  .fadeout-grid{
+    grid-template-columns: repeat(1, 1fr);
+   }
 }
 @media (max-width: 430px) {
   .resumer_image img {
