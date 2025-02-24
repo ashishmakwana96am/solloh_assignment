@@ -159,3 +159,22 @@ function updateTimeline() {
 
 window.addEventListener("scroll", updateTimeline);
 updateTimeline();
+
+
+// --fly in text
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.querySelector(".flyin_info");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          section.classList.add("show"); // Add class when section is visible
+        }
+      });
+    },
+    { threshold: 0.2 } // Trigger when 20% of the section is visible
+  );
+
+  observer.observe(section);
+});

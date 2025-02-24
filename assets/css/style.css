@@ -1505,3 +1505,87 @@ opacity: 1;
   color: white;
 }
 /* ---fadeout-grid---end */
+
+/* ---flyin info --start*/
+.flyin_text{
+  margin-bottom: 50px;
+}
+.flyin_info{
+  background-color: #F2F2F2;
+  padding: 64px 48px;
+  text-align: center;
+
+}
+.flyin_info h2{
+  margin-bottom: 20px;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #252525;
+}
+.flyin_info p{
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #636363;
+}
+.flyin_info p:nth-child(2) ,.flyin_info p:nth-child(4){
+  font-weight: 900;
+}
+.flyin_info p:nth-child(4) a{
+ text-decoration: underline;
+ text-underline-offset: 2px;
+}
+.flydata_1{
+  padding-top: 48px;
+}
+.flydata_2{
+  padding-top: 128px;
+}
+.flydata_3{
+  padding-top: 50px;
+}
+@keyframes flyInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.flyin_info h2,
+.flyin_info p {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.flyin_info.show h2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.flyin_info.show p:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.flyin_info.show p:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+.flyin_info.show p:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+/* --flyin info --end */
