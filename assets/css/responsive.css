@@ -33,6 +33,22 @@
   .flyin_info{
     padding: 48px 24px;
   }
+  .appointment .nav-link{
+    padding: 12px 3px;
+  }
+  .filter-input-box .appoinment-inputs{
+    gap: 25px;
+  }
+  .live-chat{
+    width: 506px;
+  }
+  .chat-dr .dr-img{
+    width: 90px;
+    height: 90px;
+  }
+  .chat-header{
+    padding: 8px 16px;
+  }
 }
 @media (max-width: 992px) {
   .resumer_name h1 {
@@ -45,34 +61,14 @@
   .surgery_main {
     margin-bottom: 30px;
   }
-}
-@media (max-width: 640px) {
-  .hero-content h2 {
-    font-size: 35px;
-    line-height: 38px;
+  .tab-3-filter-input{
+    padding: 0;
   }
-  .milestone-tab .nav-pills{
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  .tab3-searchted-data .tab3-content{
+    grid-template-columns:repeat(2, 1fr)
   }
-  .tab-main{
-    flex-direction: column;
-  }
-  .milestone-tab .nav-pills .nav-link{
-    border-bottom: 1px solid white;
-    border-right: none;
-  }
-  .milestone-tab .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-    border-bottom-color: #d4ff9d;
-  }
-  .milestone-tab .tab-content{
-    padding:0 20px;
-  }
-  .milestone_timeline h2{
-    font-size: 24px;
-    line-height: 26px;
+  .show-available , .appoint-card{
+    padding: 0;
   }
 }
 @media (max-width: 991px) {
@@ -103,6 +99,30 @@
     transition: opacity 0.5s ease, visibility 0.3s ease;
   }
 
+  .navbar .nav-link[aria-expanded="true"] ~ .sub-menu,
+  .submenu_link[aria-expanded="true"] ~ .subsub-menu,
+  .subsub_menu_link[aria-expanded="true"] ~ .innersub_menu {
+    display: block;
+    position: static;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .navbar .nav-link[aria-expanded="true"] + .sub-menu,
+  .submenu_link[aria-expanded="true"] + .subsub-menu,
+  .subsub_menu_link[aria-expanded="true"] + .innersub_menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  .navbar .nav-link[aria-expanded="true"] ~ .down-arrow,
+  .submenu_link[aria-expanded="true"] ~ .down-arrow,
+  .subsub_menu_link[aria-expanded="true"] ~ .down-arrow,
+  .navbar .nav-link[aria-expanded="true"] ~ .inner-down-arrow,
+  .submenu_link[aria-expanded="true"] ~ .inner-down-arrow,
+  .subsub_menu_link[aria-expanded="true"] ~ .inner-down-arrow {
+    transform: rotate(360deg);
+  }
   .submenu_link{
     display: block;
   }
@@ -149,7 +169,11 @@
 .flydata_2 {
   padding-top: 40px;
 }
+.filter-input-box .appoinment-inputs {
+  grid-template-columns: repeat(3, 1fr);
 }
+}
+
 @media (max-width: 768px) {
   .resume_header {
     gap: 20px;
@@ -184,6 +208,15 @@
   .flyin_info h2{
     font-size: 30px;
     line-height: 32px;
+  }
+  .location-data{
+    padding: 20px 8px 20px 20px;
+  }
+  .filter-input-box .appoinment-inputs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .doc-info{
+    margin-bottom: 20px;
   }
 }
 @media (max-width: 640px) {
@@ -242,6 +275,66 @@
    .flyin_info {
     padding: 30px 18px;
 }
+.hero-content h2 {
+  font-size: 35px;
+  line-height: 38px;
+}
+.milestone-tab .nav-pills{
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.tab-main{
+  flex-direction: column;
+}
+.milestone-tab .nav-pills .nav-link{
+  border-bottom: 1px solid white;
+  border-right: none;
+}
+.milestone-tab .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+  border-bottom-color: #d4ff9d;
+}
+.milestone-tab .tab-content{
+  padding:0 20px;
+}
+.milestone_timeline h2{
+  font-size: 24px;
+  line-height: 26px;
+}
+.tab3-searchted-data .tab3-content {
+  grid-template-columns: repeat(1, 1fr);
+}
+.tab-3-title h2 {
+font-size: 22px;
+line-height: 24px;
+}
+.filter-input-box .appoinment-inputs {
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.live-chat {
+  width: 356px;
+}
+.dr-detail {
+  padding-left: 10px;
+}
+.chat-dr .dr-img {
+  width: 81px;
+  height: 74px;
+}
+.chat-header {
+  padding: 8px 3px;
+}
+.chat-box .text-box {
+  height: 70px;
+}
+.chat-box .text-area{
+  height: 57px;
+}
+.right-img{
+  width: 15px;
+}
 }
 @media (max-width: 430px) {
   .resumer_image img {
@@ -256,6 +349,17 @@
     font-size: 24px;
     line-height: 26px;
   }
+  .chat-dr .dr-img {
+    width: 74px;
+    height: 74px;
+}
+.dr-detail h3 {
+  font-size: 16px;
+  line-height: 18px;
+}
+.chat-header{
+  min-height: 101px;
+}
 }
 @media (max-width: 375px) {
   .resumer_name h1 {
@@ -275,10 +379,24 @@
     font-size: 18px;
     line-height: 20px;
   }
+  .live-chat {
+    width: 324px;
+}
+.chat-submit .send-btn{
+  width: 84px;
+  height: 32px;
+}
 }
 @media (max-width: 329px) {
   .resumer_image img {
     width: 104px;
     height: 104px;
   }
+  .live-chat {
+    width: 291px;
+}
+.chat-dr .dr-img {
+  width: 76px;
+  height: 63px;
+}
 }

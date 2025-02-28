@@ -304,7 +304,7 @@
   </section>
   <!-- --herosection--end -->
   <!-- --resume start -->
-  <section class="resume_sec">
+  <!-- <section class="resume_sec">
         <div class="header_data">
            <div class="row">
                   <div class="col-12 col-lg-7 col-md-8 p-0">
@@ -708,7 +708,7 @@
             </div>
           </div>
         </div>
-     </section>
+     </section> -->
   <!-- --resume end  -->
   <!-- ---surgery--section start -->
   <section class="surgery">
@@ -944,11 +944,329 @@
       </div>
     </section>
 
+    <!-- --set appointment -->
+     <section class="appointment">
+      <div class="container">
+               <div class="appointment-title">
+                <h2>Search appointment by:</h2>
+               </div>
+      </div>         
+               <div class="appointment-tab">
+                <div class="container">
+                  <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Location</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Doctor or Clinician  </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade  show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="appointment-tab-1">
+                      <h2 class="appoint-title">Select a time for your office visit appointment.</h2>
+                      <div class="filter-input-box">
+                        <div class="container">
+                            <div class="appoinment-inputs">
+                                <div class="input-row">
+                                  <label class="form-label">Date</label>
+                                  <input type="date" class="form-control"  id="dateInput">
+                              </div>
+                                <div class="input-row">
+                                  <label class="form-label">Time</label>
+                                  <select class="form-select" id="timeInput">
+                                    <option selected>ALL</option>
+                                    <option value="pm">PM</option>
+                                    <option value="am">AM</option>
+                                  </select>
+                              </div>
+                              <div class="input-row search-box">
+                                <label class="form-label">City, state or ZIP</label>
+                                <div class="search-container">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Enter location">
+                                    <span id="clearSearch" class="clear-icon">&times;</span>
+                                    <ul id="searchResults"></ul> 
+                                </div>
+                               </div>           
+                                <div class="input-row">
+                                  <label class="form-label">Distance within</label>
+                                  <select id="distanceInput"  class="form-select">
+                                    <option selected>ALL</option>
+                                    <option value="mile">5 miles</option>
+                                    <option value="mile">10 miles</option>
+                                    <option value="mile">15 miles</option>
+                                    <option value="mile">20 miles</option>
+                                    <option value="mile">25 miles</option>
+                                  </select>
+                              </div>
+                              <div class="input-row">
+                                <button id="searchBtn" class="app-search-btn btn">Search</button>
+                              </div>
+                            </div>
+                        </div>
+                      <div>
+                      </div>
+                      </div>
+                    
+                      <div class="container">
+                        <div class="show-available">
+                          <h3>Showing 100 next available times</h3>
+                        </div>
+                          <div id="appointmentContainer" class="appoint-card"></div>
+                            <!-- <div class="app-card-info">
+                               <a href="#">
+                                <div class="card_top">
+                                 <div>
+                                  <h4>Today</h4>
+                                  <h3>06:20 PM</h3>
+                                 </div>
+                                 <div class="card_right_errrow"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="doctor_location">
+                                  <div class="row align-items-center">
+                                    <div class="col-12 col-md-6">
+                                      <div class="doc-info">
+                                        <div class="doc-img">
+                                          <img src="assets/images/location1.png" alt="">
+                                        </div>
+                                        <div class="doc-data">
+                                          <h3>Kristine A. Johnson, APRN, CNP</h3>
+                                          <p>Family Medicine</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                      <div class="doc-location">
+                                        <p>HealthPartners Clinic Hudson 403 Building</p>
+                                        <p>403 Stageline Rd <br/>HUDSON, WI 54016-7848</p>
+                                        <h4>26.8 miles away</h4>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                               </a>
+                            </div> -->
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="appointment-tab-2">
+                      <div class="container">
+                        <div class="tab-2-title">
+                          <h2>Select a clinic for your office visit appointment.</h2>
+                        </div>
+                        <div class="location-search">
+                          <label class="form-label">Find a clinic near you</label>
+                          <input type="search" class="form-control" id="search-box" autocomplete="off">
+                          <div id="autocomplete-list" class="autocomplete-list"></div>
+                      </div>
+                        <div class="searchated-location-info">
+                          <h3 class="show-list-title">Showing 55 locations</h3>
+                          <div class="row">
+                            <div class="col-12 col-lg-6 custm-mb">
+                                   <div class="location-data">
+                                        <div>
+                                          <h3>Park Nicollet Clinic Minneapolis</h3>
+                                        <p>2001 Blaisdell Ave. S. Minneapolis MN 55404</p>
+                                        <b>1.2 miles</b>
+                                        </div>
+                                        <div class="card_right_errrow"><i class="fa-solid fa-chevron-right"></i></div>
+                                   </div>
+                            </div>
+                            <div class="col-12 col-lg-6 custm-mb">
+                                   <div class="location-data">
+                                        <div>
+                                          <h3>Park Nicollet Clinic Brooklyn Center Brookdale </h3>
+                                        <p>2001 Blaisdell Ave. S. Minneapolis MN 55404</p>
+                                        <b>1.2 miles</b>
+                                        </div>
+                                        <div class="card_right_errrow"><i class="fa-solid fa-chevron-right"></i></div>
+                                   </div>
+                            </div>
+                            <div class="col-12 col-lg-6 custm-mb">
+                                   <div class="location-data">
+                                        <div>
+                                          <h3>Park Nicollet Clinic Minneapolis</h3>
+                                        <p>2001 Blaisdell Ave. S. Minneapolis MN 55404</p>
+                                        <b>1.2 miles</b>
+                                        </div>
+                                        <div class="card_right_errrow"><i class="fa-solid fa-chevron-right"></i></div>
+                                   </div>
+                            </div>
+                            <div class="col-12 col-lg-6 custm-mb">
+                                   <div class="location-data">
+                                        <div>
+                                          <h3>Park Nicollet Clinic Brooklyn Center Brookdale </h3>
+                                        <p>2001 Blaisdell Ave. S. Minneapolis MN 55404</p>
+                                        <b>1.2 miles</b>
+                                        </div>
+                                        <div class="card_right_errrow"><i class="fa-solid fa-chevron-right"></i></div>
+                                   </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="appointment-tab-3">
+                    <div class="tab-3-title">
+                      <h2>Select a doctor or clinician for your office visit appointment.</h2>
+                    </div>
+                      <div class="tab-3-filter-info">
+                        <div class="container">
+                        <div class="tab-3-filter-input">
+                          <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="input-row">
+                                    <label class="form-label">Doctor Name</label>
+                                    <input type="search" class="form-control">
+                                    <span class="suggest-text">First or last name</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="input-row">
+                                </div>
+                                <label class="form-label">Gender</label>
+                                <select class="form-select">
+                                  <option value="all" selected>ALL</option>
+                                  <option value="female">Female</option>
+                                  <option value="male">Male</option>
+                              </select> 
+                            </div>
+                        </div>
+                          </div>        
+                          </div>
+                      </div>
+                      <div class="tab3-searchted-data">
+                        <div class="container">
+                          <div class="tab3-data">
+                            <h2 class="show-list-title">Showing 10 doctors or clinicians</h2>
+                           </div>
+                           <div class="tab3-content">
+                                   <div class="available-doctors" data-gender="female">
+                                         <div class="available-doc-img">
+                                          <img src="assets/images/doc1.png" alt="">
+                                         </div>
+                                         <div class="available-doc-data">
+                                          <h3>Maggie Y. Abraham, MD</h3>
+                                          <p>Family Medicine</p>
+                                         </div>
+                                   </div>
+                                   <div class="available-doctors" data-gender="male">
+                                         <div class="available-doc-img">
+                                          <img src="assets/images/doc1.png" alt="">
+                                         </div>
+                                         <div class="available-doc-data">
+                                          <h3>Maggie Y. Abraham, MD</h3>
+                                          <p>Family Medicine</p>
+                                         </div>
+                                   </div>
+                                   <div class="available-doctors" data-gender="male">
+                                         <div class="available-doc-img">
+                                          <img src="assets/images/doc1.png" alt="">
+                                         </div>
+                                         <div class="available-doc-data">
+                                          <h3>Maggie Y. Abraham, MD</h3>
+                                          <p>Family Medicine</p>
+                                         </div>
+                                   </div>
+                                   <div class="available-doctors" data-gender="female">
+                                         <div class="available-doc-img">
+                                          <img src="assets/images/doc1.png" alt="">
+                                         </div>
+                                         <div class="available-doc-data">
+                                          <h3>Maggie Y. Abraham, MD</h3>
+                                          <p>Family Medicine</p>
+                                         </div>
+                                   </div>
+                           </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                </div>
+               </div>
+     
+     </section>
+
+     <!-- --live chat  -->
+<section class="live-chat">
+  <button class="chat-close">✖</button> 
+  <div class="chat-window">
+    <div class="chat-header">
+        <div class="chat-dr">
+          <img src="assets/images/chatuser.jpg" alt="" class="dr-img">
+          <img src="assets/images/right.svg" alt="" class="right-img">
+        </div>
+        <div class="dr-detail">
+          <h3>Dr. David, MD</h3>
+          <p>General Practitioner</p>
+          <p>Chief Resident at NYU specializing in all areas of medicine</p>
+          <div class="rating">
+            <p class="question-count">
+              <strong>41,957</strong> satisfied customers
+            </p>
+          </div>
+        </div>
+    </div>
+    <div class="dialog-body">
+          <div class="chat-msj expert">
+            <img src="assets/images/chatadmin.png" alt="" class="chat-user-img">
+            <div class="chat-content">
+              <span class="user-name">Pearl Chatbot, Expert's Assistant</span>
+              <div class="chat-text-msj">
+                Pearl Chatbot, Expert's Assistant
+              </div>
+            </div>
+          </div>
+          <div class="chat-msj customer">
+            <div class="content">
+                <span class="user-name">You</span>
+                <div class="chat-text-msj">
+                 Helo
+                </div>
+            </div>
+          </div>
+          <div class="chat-msj expert">
+            <img src="assets/images/chatadmin.png" alt="" class="chat-user-img">
+            <div class="chat-content">
+              <span class="user-name">Pearl Chatbot, Expert's Assistant</span>
+              <div class="chat-text-msj">
+                Pearl Chatbot, Expert's Assistant
+              </div>
+            </div>
+          </div>
+          <div class="chat-msj customer">
+            <div class="content">
+                <span class="user-name">You</span>
+                <div class="chat-text-msj">
+                 Helo
+                </div>
+            </div>
+          </div>
+    </div>
+    <div class="chat-box">
+      <div class="wrapper">
+        <div class="text-box">
+          <textarea name="" id="" placeholder="Type your message..." class="text-area"></textarea>
+        </div>
+        <div class="chat-submit">
+          <div class="online-now">General Practitioners are online now</div>
+          <input type="button" value="Send" class="send-btn">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- ---script -->
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>

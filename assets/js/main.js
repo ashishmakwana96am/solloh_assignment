@@ -178,3 +178,243 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(section);
 });
+
+
+///appointment search  zip code area
+document.addEventListener("DOMContentLoaded", function () {
+  const appointments = [
+      { id: 1, name: "Kristine A. Johnson", specialty: "Family Medicine", location: "Minneapolis, Minnesota, United States", date: "2024-03-01", time: "PM",  miles: 10 },
+      { id: 2, name: "Michael Smith", specialty: "Cardiology", location: "Minneapolis, Kansas, United States", date: "2024-03-02", time: "AM", miles: 15 },
+      { id: 3, name: "Lisa Brown", specialty: "Dermatology", location: "Minneota, Minnesota, United States", date: "2024-03-01", time: " PM", miles: 5 },
+      { id: 4, name: "John Doe", specialty: "Neurology", location: "Unity, Wisconsin, United States", date: "2024-03-03", time: "AM", miles: 20 }
+  ];
+
+  const locations = [
+      "Minneapolis, Minnesota, United States",
+      "Minneapolis, Kansas, United States",
+      "Minneota, Minnesota, United States",
+      "Unity, Wisconsin, United States",
+      "Union, New Jersey, United States"
+  ];
+
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const clearSearch = document.getElementById("clearSearch");
+  const appointmentContainer = document.getElementById("appointmentContainer");
+  const searchBtn = document.getElementById("searchBtn");
+
+  function displayAppointments(data) {
+      appointmentContainer.innerHTML = "";
+      if (data.length === 0) {
+          appointmentContainer.innerHTML = "<p>No results found.</p>";
+          return;
+      }
+      data.forEach(app => {
+          const card = document.createElement("div");
+          card.classList.add("app-card-info");
+          card.innerHTML = `
+              <a href="#">
+                  <div class="card_top">
+                      <div>
+                          <h4>${app.date}</h4>
+                          <h3>${app.time}</h3>
+                      </div>
+                      <div class="card_right_errrow"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="doctor_location">
+                      <div class="row align-items-center">
+                          <div class="col-12 col-md-6">
+                              <div class="doc-info">
+                                  <div class="doc-img">
+                                      <img src="assets/images/location1.png" alt="">
+                                  </div>
+                                  <div class="doc-data">
+                                      <h3>${app.name}</h3>
+                                      <p>${app.specialty}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-12 col-md-6">
+                              <div class="doc-location">
+                                  <p>${app.location}</p>
+                                  <h4>${app.miles} miles away</h4>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </a>`;
+          appointmentContainer.appendChild(card);
+      });
+  }
+
+  displayAppointments(appointments);
+
+  searchBtn.addEventListener("click", function () {
+      const dateValue = document.getElementById("dateInput").value;
+      const timeValue = document.getElementById("timeInput").value;
+      const locationValue = searchInput.value.toLowerCase();
+      const distanceValue = parseFloat(document.getElementById("distanceInput").value);
+
+      const filteredData = appointments.filter(app => {
+          return (
+              (dateValue === "" || app.date === dateValue) &&
+              (timeValue === "ALL" || app.time.toLowerCase() === timeValue.toLowerCase()) &&
+              (locationValue === "" || app.location.toLowerCase().includes(locationValue)) &&
+              (isNaN(distanceValue) || app.miles <= distanceValue)
+          );
+      });
+
+      displayAppointments(filteredData);
+  });
+
+  searchInput.addEventListener("input", function () {
+      let value = searchInput.value.toLowerCase().trim();
+      searchResults.innerHTML = "";
+
+      if (!value) {
+          searchResults.style.display = "none";
+          clearSearch.style.display = "none";
+          return;
+      }
+
+      clearSearch.style.display = "flex";
+      const filteredLocations = locations.filter(loc => loc.toLowerCase().includes(value));
+
+      if (filteredLocations.length === 0) {
+          searchResults.style.display = "none";
+          return;
+      }
+
+      filteredLocations.forEach(location => {
+          const li = document.createElement("li");
+          li.textContent = location;
+          li.addEventListener("click", function () {
+              searchInput.value = location;
+              searchResults.innerHTML = "";
+              searchResults.style.display = "none";
+          });
+          searchResults.appendChild(li);
+      });
+
+      searchResults.style.display = "block";
+  });
+
+  clearSearch.addEventListener("click", function () {
+      searchInput.value = "";
+      searchResults.innerHTML = "";
+      searchResults.style.display = "none";
+      clearSearch.style.display = "none";
+  });
+
+  document.addEventListener("click", function (e) {
+      if (!e.target.closest(".search-box")) {
+          searchResults.style.display = "none";
+      }
+  });
+});
+
+// ---appointment tab-3 search 
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.querySelector(".input-row input[type='search']");
+  const genderSelect = document.querySelector(".form-select");
+  const doctorList = document.querySelectorAll(".available-doctors");
+
+  function filterDoctors() {
+      const searchValue = searchInput.value.toLowerCase().trim();
+      const selectedGender = genderSelect.value.toLowerCase();
+
+      doctorList.forEach(doctor => {
+          const doctorName = doctor.querySelector("h3").textContent.toLowerCase();
+          const doctorSpecialty = doctor.querySelector("p").textContent.toLowerCase();
+          const doctorGender = doctor.getAttribute("data-gender").toLowerCase();
+
+          const nameMatch = !searchValue || doctorName.includes(searchValue) || doctorSpecialty.includes(searchValue);
+          const genderMatch = selectedGender === "all" || doctorGender === selectedGender;
+
+          if (nameMatch && genderMatch) {
+              doctor.style.display = "flex";
+          } else {
+              doctor.style.display = "none";
+          }
+      });
+  }
+
+  searchInput.addEventListener("input", filterDoctors);
+  genderSelect.addEventListener("change", function () {
+      setTimeout(filterDoctors, 100); // Delay added to ensure value update
+  });
+
+  filterDoctors();
+});
+
+
+// -------------location tab- 2 search
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const locations = [
+            "Minneapolis, Minnesota, United States",
+            "Minneapolis, Kansas, United States",
+            "Minneota, Minnesota, United States",
+            "Unity, Wisconsin, United States",
+            "Union, New Jersey, United States"
+        ];
+
+        const searchBox = document.getElementById("search-box");
+        const autocompleteList = document.getElementById("autocomplete-list");
+        const locationItems = document.querySelectorAll(".location-data");
+
+        searchBox.addEventListener("input", function () {
+            let searchText = searchBox.value.toLowerCase();
+            autocompleteList.innerHTML = "";
+
+            if (searchText) {
+                let filteredSuggestions = locations.filter(loc => loc.toLowerCase().includes(searchText));
+                filteredSuggestions.forEach(loc => {
+                    let item = document.createElement("div");
+                    item.classList.add("autocomplete-item");
+                    item.textContent = loc;
+                    item.addEventListener("click", function () {
+                        searchBox.value = loc;
+                        autocompleteList.innerHTML = "";
+                        filterLocations();
+                    });
+                    autocompleteList.appendChild(item);
+                });
+            }
+        });
+
+        searchBox.addEventListener("keyup", filterLocations);
+
+        function filterLocations() {
+            let searchText = searchBox.value.toLowerCase();
+            locationItems.forEach(item => {
+                let clinicName = item.querySelector("h3").textContent.toLowerCase();
+                let address = item.querySelector("p").textContent.toLowerCase();
+                item.parentElement.style.display = clinicName.includes(searchText) || address.includes(searchText) ? "block" : "none";
+            });
+        }
+
+        document.addEventListener("click", function (e) {
+            if (!searchBox.contains(e.target) && !autocompleteList.contains(e.target)) {
+                autocompleteList.innerHTML = "";
+            }
+        });
+    });
+
+    // --live chat box close icon
+    document.addEventListener("DOMContentLoaded", function () {
+      const chatBox = document.querySelector(".live-chat");
+      const closeButton = document.querySelector(".chat-close");
+  
+      // Check localStorage and set visibility accordingly
+      if (localStorage.getItem("chatClosed") === "true") {
+          chatBox.style.display = "block";
+      } else {
+          chatBox.style.display = "none";
+      }
+  
+      closeButton.addEventListener("click", function () {
+          chatBox.style.display = "none";
+          localStorage.setItem("chatClosed", "true"); // Store state
+      });
+  });
