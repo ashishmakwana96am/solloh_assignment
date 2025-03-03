@@ -151,31 +151,25 @@ body {
 /* ---herosection start */
 .hero-sec {
   padding: 95px 0 0px;
-  margin-bottom: 20px;
   position: relative;
   background-color: #000;
   transition: padding-top 0.3s ease-in-out;
 }
-.video_data video {
-  width: 100%;
-  height: 500px;
-  left: 50%;
-  max-width: none !important;
-  min-width: 100%;
-  object-fit: cover;
-  object-position: center;
-  width: 100%;
-}
 .navbar.scrolled + .hero-sec {
   padding-top: 0;
 }
-
 .video-container {
   position: relative;
   width: 100%;
   height: 500px;
   overflow: hidden;
 }
+.video-container video{
+  object-fit: fill;
+  width: 100%;
+  height: 500px;
+}
+
 .video-container::after {
   position: absolute;
   content: "";
@@ -185,6 +179,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .hero-content {
   position: absolute;
   top: 50%;
@@ -237,12 +232,6 @@ body {
   z-index: 2;
   display: block;
   color: white;
-}
-
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 @keyframes pulse-border {
@@ -867,6 +856,7 @@ video {
 /* champion success start */
 .champion_success {
   padding-top: 22px;
+  margin-top: 30px;
 }
 .champion_flex {
   display: flex;
@@ -986,6 +976,12 @@ video {
   line-height: 40px;
   font-weight: 600;
 }
+.video-tag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* champion success end */
 
 /* ---resize header --start */
@@ -1124,6 +1120,16 @@ video {
 .sub-menu .sub_item:hover .down-arrow,
 .subsub-menu .subsub_item:hover .inner-down-arrow {
   color: #fff;
+}
+.sub-menu,
+.subsub-menu,
+.innersub_menu {
+  pointer-events: none;
+}
+.nav-item:hover .sub-menu,
+.sub-menu .sub_item:hover .subsub-menu,
+.subsub-menu .subsub_item:hover .innersub_menu {
+  pointer-events: auto;
 }
 .down-arrow,
 .inner-down-arrow {
@@ -1989,6 +1995,10 @@ select:focus,
   right: 5%;
   width: 686px;
   z-index: 99999;
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .chat-window {
   display: flex;
@@ -2269,3 +2279,35 @@ select:focus,
 }
 
 /* --live chat end */
+/* Chat icon button */
+.chat-icon {
+  position: fixed;
+  bottom: 3%;
+  right:3%;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-icon img {
+  width: 35px;
+  height: 35px;
+}
+
+.chat-icon:hover {
+  transform: scale(1.1);
+}
+/* Show chat box */
+.live-chat.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+/*-----*/

@@ -12,53 +12,52 @@ AOS.init({
 
 // ---Hero section play video
 document.addEventListener("DOMContentLoaded", function () {
-    const video = document.getElementById("hero-video");
-    const playBtn = document.getElementById("play-btn");
-    const icon = playBtn.querySelector("i");
+  const video = document.getElementById("hero-video");
+  const playBtn = document.getElementById("play-btn");
+  const icon = playBtn.querySelector("i");
 
-    playBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (video.paused) {
-        video.play();
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
-      } else {
-        video.pause();
-        icon.classList.remove("fa-pause");
-        icon.classList.add("fa-play");
-      }
-    });
+  playBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (video.paused) {
+      video.play();
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
+    } else {
+      video.pause();
+      icon.classList.remove("fa-pause");
+      icon.classList.add("fa-play");
+    }
   });
+});
 
-  //   --resize header 
+//   --resize header 
+document.addEventListener("DOMContentLoaded", function () {
+  let navbar = document.querySelector(".navbar");
+  let logo = document.querySelector(".navbar-brand img");
+  let heroSection = document.querySelector(".hero-sec");
 
-    document.addEventListener("DOMContentLoaded", function () {
-      let navbar = document.querySelector(".navbar");
-      let logo = document.querySelector(".navbar-brand img");
-      let heroSection = document.querySelector(".hero-sec");
-    
-      window.addEventListener("scroll", function () {
-        let scrollY = window.scrollY;
-    
-        if (scrollY > 180) {
-          navbar.classList.add("scrolled");
-          logo.classList.add("small");
-          logo.classList.remove("large");
-          heroSection.style.paddingTop = "70px"; // Minimum padding when scrolled
-        } else if (scrollY >= 160 && scrollY <= 180) {
-          let dynamicPadding = 95 - ((scrollY - 160) * 1.25); // Smoothly reduce padding
-          heroSection.style.paddingTop = `${dynamicPadding}px`;
-        } else {
-          navbar.classList.remove("scrolled");
-          logo.classList.add("large");
-          logo.classList.remove("small");
-          heroSection.style.paddingTop = "95px"; // Restore original spacing
-        }
-      });
-    });
+  window.addEventListener("scroll", function () {
+    let scrollY = window.scrollY;
 
-    // ---intractive dropdown responsive 
-   document.addEventListener("DOMContentLoaded", function () {
+    if (scrollY > 180) {
+      navbar.classList.add("scrolled");
+      logo.classList.add("small");
+      logo.classList.remove("large");
+      heroSection.style.paddingTop = "70px"; // Minimum padding when scrolled
+    } else if (scrollY >= 160 && scrollY <= 180) {
+      let dynamicPadding = 95 - ((scrollY - 160) * 1.25); // Smoothly reduce padding
+      heroSection.style.paddingTop = `${dynamicPadding}px`;
+    } else {
+      navbar.classList.remove("scrolled");
+      logo.classList.add("large");
+      logo.classList.remove("small");
+      heroSection.style.paddingTop = "95px"; // Restore original spacing
+    }
+  });
+});
+
+// ---intractive dropdown responsive 
+document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link, .submenu_link, .subsub_menu_link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
@@ -118,14 +117,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 // --menu icon -- responsive 
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".hamburger").addEventListener("click", function () {
     this.classList.toggle("is-active");
   });
 });
-
 
 // --------milestone --
 function updateTimeline() {
@@ -156,10 +153,8 @@ function updateTimeline() {
     progressBar.style.height = "0%"; // Reset when out of view
   }
 }
-
 window.addEventListener("scroll", updateTimeline);
 updateTimeline();
-
 
 // --fly in text
 document.addEventListener("DOMContentLoaded", function () {
@@ -179,22 +174,21 @@ document.addEventListener("DOMContentLoaded", function () {
   observer.observe(section);
 });
 
-
 ///appointment search  zip code area
 document.addEventListener("DOMContentLoaded", function () {
   const appointments = [
-      { id: 1, name: "Kristine A. Johnson", specialty: "Family Medicine", location: "Minneapolis, Minnesota, United States", date: "2024-03-01", time: "PM",  miles: 10 },
-      { id: 2, name: "Michael Smith", specialty: "Cardiology", location: "Minneapolis, Kansas, United States", date: "2024-03-02", time: "AM", miles: 15 },
-      { id: 3, name: "Lisa Brown", specialty: "Dermatology", location: "Minneota, Minnesota, United States", date: "2024-03-01", time: " PM", miles: 5 },
-      { id: 4, name: "John Doe", specialty: "Neurology", location: "Unity, Wisconsin, United States", date: "2024-03-03", time: "AM", miles: 20 }
+    { id: 1, name: "Kristine A. Johnson", specialty: "Family Medicine", location: "Minneapolis, Minnesota, United States", date: "2024-03-01", time: "PM", miles: 10 },
+    { id: 2, name: "Michael Smith", specialty: "Cardiology", location: "Minneapolis, Kansas, United States", date: "2024-03-02", time: "AM", miles: 15 },
+    { id: 3, name: "Lisa Brown", specialty: "Dermatology", location: "Minneota, Minnesota, United States", date: "2024-03-01", time: " PM", miles: 5 },
+    { id: 4, name: "John Doe", specialty: "Neurology", location: "Unity, Wisconsin, United States", date: "2024-03-03", time: "AM", miles: 20 }
   ];
 
   const locations = [
-      "Minneapolis, Minnesota, United States",
-      "Minneapolis, Kansas, United States",
-      "Minneota, Minnesota, United States",
-      "Unity, Wisconsin, United States",
-      "Union, New Jersey, United States"
+    "Minneapolis, Minnesota, United States",
+    "Minneapolis, Kansas, United States",
+    "Minneota, Minnesota, United States",
+    "Unity, Wisconsin, United States",
+    "Union, New Jersey, United States"
   ];
 
   const searchInput = document.getElementById("searchInput");
@@ -204,15 +198,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBtn = document.getElementById("searchBtn");
 
   function displayAppointments(data) {
-      appointmentContainer.innerHTML = "";
-      if (data.length === 0) {
-          appointmentContainer.innerHTML = "<p>No results found.</p>";
-          return;
-      }
-      data.forEach(app => {
-          const card = document.createElement("div");
-          card.classList.add("app-card-info");
-          card.innerHTML = `
+    appointmentContainer.innerHTML = "";
+    if (data.length === 0) {
+      appointmentContainer.innerHTML = "<p>No results found.</p>";
+      return;
+    }
+    data.forEach(app => {
+      const card = document.createElement("div");
+      card.classList.add("app-card-info");
+      card.innerHTML = `
               <a href="#">
                   <div class="card_top">
                       <div>
@@ -243,73 +237,73 @@ document.addEventListener("DOMContentLoaded", function () {
                       </div>
                   </div>
               </a>`;
-          appointmentContainer.appendChild(card);
-      });
+      appointmentContainer.appendChild(card);
+    });
   }
 
   displayAppointments(appointments);
 
   searchBtn.addEventListener("click", function () {
-      const dateValue = document.getElementById("dateInput").value;
-      const timeValue = document.getElementById("timeInput").value;
-      const locationValue = searchInput.value.toLowerCase();
-      const distanceValue = parseFloat(document.getElementById("distanceInput").value);
+    const dateValue = document.getElementById("dateInput").value;
+    const timeValue = document.getElementById("timeInput").value;
+    const locationValue = searchInput.value.toLowerCase();
+    const distanceValue = parseFloat(document.getElementById("distanceInput").value);
 
-      const filteredData = appointments.filter(app => {
-          return (
-              (dateValue === "" || app.date === dateValue) &&
-              (timeValue === "ALL" || app.time.toLowerCase() === timeValue.toLowerCase()) &&
-              (locationValue === "" || app.location.toLowerCase().includes(locationValue)) &&
-              (isNaN(distanceValue) || app.miles <= distanceValue)
-          );
-      });
+    const filteredData = appointments.filter(app => {
+      return (
+        (dateValue === "" || app.date === dateValue) &&
+        (timeValue === "ALL" || app.time.toLowerCase() === timeValue.toLowerCase()) &&
+        (locationValue === "" || app.location.toLowerCase().includes(locationValue)) &&
+        (isNaN(distanceValue) || app.miles <= distanceValue)
+      );
+    });
 
-      displayAppointments(filteredData);
+    displayAppointments(filteredData);
   });
 
   searchInput.addEventListener("input", function () {
-      let value = searchInput.value.toLowerCase().trim();
-      searchResults.innerHTML = "";
+    let value = searchInput.value.toLowerCase().trim();
+    searchResults.innerHTML = "";
 
-      if (!value) {
-          searchResults.style.display = "none";
-          clearSearch.style.display = "none";
-          return;
-      }
+    if (!value) {
+      searchResults.style.display = "none";
+      clearSearch.style.display = "none";
+      return;
+    }
 
-      clearSearch.style.display = "flex";
-      const filteredLocations = locations.filter(loc => loc.toLowerCase().includes(value));
+    clearSearch.style.display = "flex";
+    const filteredLocations = locations.filter(loc => loc.toLowerCase().includes(value));
 
-      if (filteredLocations.length === 0) {
-          searchResults.style.display = "none";
-          return;
-      }
+    if (filteredLocations.length === 0) {
+      searchResults.style.display = "none";
+      return;
+    }
 
-      filteredLocations.forEach(location => {
-          const li = document.createElement("li");
-          li.textContent = location;
-          li.addEventListener("click", function () {
-              searchInput.value = location;
-              searchResults.innerHTML = "";
-              searchResults.style.display = "none";
-          });
-          searchResults.appendChild(li);
+    filteredLocations.forEach(location => {
+      const li = document.createElement("li");
+      li.textContent = location;
+      li.addEventListener("click", function () {
+        searchInput.value = location;
+        searchResults.innerHTML = "";
+        searchResults.style.display = "none";
       });
+      searchResults.appendChild(li);
+    });
 
-      searchResults.style.display = "block";
+    searchResults.style.display = "block";
   });
 
   clearSearch.addEventListener("click", function () {
-      searchInput.value = "";
-      searchResults.innerHTML = "";
-      searchResults.style.display = "none";
-      clearSearch.style.display = "none";
+    searchInput.value = "";
+    searchResults.innerHTML = "";
+    searchResults.style.display = "none";
+    clearSearch.style.display = "none";
   });
 
   document.addEventListener("click", function (e) {
-      if (!e.target.closest(".search-box")) {
-          searchResults.style.display = "none";
-      }
+    if (!e.target.closest(".search-box")) {
+      searchResults.style.display = "none";
+    }
   });
 });
 
@@ -320,101 +314,105 @@ document.addEventListener("DOMContentLoaded", function () {
   const doctorList = document.querySelectorAll(".available-doctors");
 
   function filterDoctors() {
-      const searchValue = searchInput.value.toLowerCase().trim();
-      const selectedGender = genderSelect.value.toLowerCase();
+    const searchValue = searchInput.value.toLowerCase().trim();
+    const selectedGender = genderSelect.value.toLowerCase();
 
-      doctorList.forEach(doctor => {
-          const doctorName = doctor.querySelector("h3").textContent.toLowerCase();
-          const doctorSpecialty = doctor.querySelector("p").textContent.toLowerCase();
-          const doctorGender = doctor.getAttribute("data-gender").toLowerCase();
+    doctorList.forEach(doctor => {
+      const doctorName = doctor.querySelector("h3").textContent.toLowerCase();
+      const doctorSpecialty = doctor.querySelector("p").textContent.toLowerCase();
+      const doctorGender = doctor.getAttribute("data-gender").toLowerCase();
 
-          const nameMatch = !searchValue || doctorName.includes(searchValue) || doctorSpecialty.includes(searchValue);
-          const genderMatch = selectedGender === "all" || doctorGender === selectedGender;
+      const nameMatch = !searchValue || doctorName.includes(searchValue) || doctorSpecialty.includes(searchValue);
+      const genderMatch = selectedGender === "all" || doctorGender === selectedGender;
 
-          if (nameMatch && genderMatch) {
-              doctor.style.display = "flex";
-          } else {
-              doctor.style.display = "none";
-          }
-      });
+      if (nameMatch && genderMatch) {
+        doctor.style.display = "flex";
+      } else {
+        doctor.style.display = "none";
+      }
+    });
   }
 
   searchInput.addEventListener("input", filterDoctors);
   genderSelect.addEventListener("change", function () {
-      setTimeout(filterDoctors, 100); // Delay added to ensure value update
+    setTimeout(filterDoctors, 100); // Delay added to ensure value update
   });
 
   filterDoctors();
 });
 
+// -----------appointment--location tab- 2 search
+document.addEventListener("DOMContentLoaded", function () {
+  const locations = [
+    "Minneapolis, Minnesota, United States",
+    "Minneapolis, Kansas, United States",
+    "Minneota, Minnesota, United States",
+    "Unity, Wisconsin, United States",
+    "Union, New Jersey, United States"
+  ];
 
-// -------------location tab- 2 search
+  const searchBox = document.getElementById("search-box");
+  const autocompleteList = document.getElementById("autocomplete-list");
+  const locationItems = document.querySelectorAll(".location-data");
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const locations = [
-            "Minneapolis, Minnesota, United States",
-            "Minneapolis, Kansas, United States",
-            "Minneota, Minnesota, United States",
-            "Unity, Wisconsin, United States",
-            "Union, New Jersey, United States"
-        ];
+  searchBox.addEventListener("input", function () {
+    let searchText = searchBox.value.toLowerCase();
+    autocompleteList.innerHTML = "";
 
-        const searchBox = document.getElementById("search-box");
-        const autocompleteList = document.getElementById("autocomplete-list");
-        const locationItems = document.querySelectorAll(".location-data");
-
-        searchBox.addEventListener("input", function () {
-            let searchText = searchBox.value.toLowerCase();
-            autocompleteList.innerHTML = "";
-
-            if (searchText) {
-                let filteredSuggestions = locations.filter(loc => loc.toLowerCase().includes(searchText));
-                filteredSuggestions.forEach(loc => {
-                    let item = document.createElement("div");
-                    item.classList.add("autocomplete-item");
-                    item.textContent = loc;
-                    item.addEventListener("click", function () {
-                        searchBox.value = loc;
-                        autocompleteList.innerHTML = "";
-                        filterLocations();
-                    });
-                    autocompleteList.appendChild(item);
-                });
-            }
+    if (searchText) {
+      let filteredSuggestions = locations.filter(loc => loc.toLowerCase().includes(searchText));
+      filteredSuggestions.forEach(loc => {
+        let item = document.createElement("div");
+        item.classList.add("autocomplete-item");
+        item.textContent = loc;
+        item.addEventListener("click", function () {
+          searchBox.value = loc;
+          autocompleteList.innerHTML = "";
+          filterLocations();
         });
-
-        searchBox.addEventListener("keyup", filterLocations);
-
-        function filterLocations() {
-            let searchText = searchBox.value.toLowerCase();
-            locationItems.forEach(item => {
-                let clinicName = item.querySelector("h3").textContent.toLowerCase();
-                let address = item.querySelector("p").textContent.toLowerCase();
-                item.parentElement.style.display = clinicName.includes(searchText) || address.includes(searchText) ? "block" : "none";
-            });
-        }
-
-        document.addEventListener("click", function (e) {
-            if (!searchBox.contains(e.target) && !autocompleteList.contains(e.target)) {
-                autocompleteList.innerHTML = "";
-            }
-        });
-    });
-
-    // --live chat box close icon
-    document.addEventListener("DOMContentLoaded", function () {
-      const chatBox = document.querySelector(".live-chat");
-      const closeButton = document.querySelector(".chat-close");
-  
-      // Check localStorage and set visibility accordingly
-      if (localStorage.getItem("chatClosed") === "true") {
-          chatBox.style.display = "block";
-      } else {
-          chatBox.style.display = "none";
-      }
-  
-      closeButton.addEventListener("click", function () {
-          chatBox.style.display = "none";
-          localStorage.setItem("chatClosed", "true"); // Store state
+        autocompleteList.appendChild(item);
       });
+    }
   });
+
+  searchBox.addEventListener("keyup", filterLocations);
+
+  function filterLocations() {
+    let searchText = searchBox.value.toLowerCase();
+    locationItems.forEach(item => {
+      let clinicName = item.querySelector("h3").textContent.toLowerCase();
+      let address = item.querySelector("p").textContent.toLowerCase();
+      item.parentElement.style.display = clinicName.includes(searchText) || address.includes(searchText) ? "block" : "none";
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    if (!searchBox.contains(e.target) && !autocompleteList.contains(e.target)) {
+      autocompleteList.innerHTML = "";
+    }
+  });
+});
+
+// --live chat box close icon
+document.addEventListener("DOMContentLoaded", function () {
+  const chatBox = document.querySelector(".live-chat");
+  const chatIcon = document.querySelector(".chat-icon");
+  const chatClose = document.querySelector(".chat-close");
+
+  // Check localStorage and set chat visibility
+  if (localStorage.getItem("chatClosed") === "true") {
+    chatBox.classList.remove("active");
+  }
+
+  // Show chat box when clicking the chat icon
+  chatIcon.addEventListener("click", function () {
+    chatBox.classList.add("active");
+    localStorage.setItem("chatClosed", "false"); // Reset state when opening
+  });
+
+  // Close chat box and store state
+  chatClose.addEventListener("click", function () {
+    chatBox.classList.remove("active");
+    localStorage.setItem("chatClosed", "true");
+  });
+});
