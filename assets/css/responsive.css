@@ -1,6 +1,13 @@
 @media (max-width: 1440px) {
+ 
 }
 @media (max-width: 1199px) {
+  .billpay-form form{
+    margin: 0;
+  }
+  .bill-instruction{
+    max-width: 60%;
+  }
 }
 @media (max-width: 1024px) {
   .hero-content h2 {
@@ -26,28 +33,31 @@
     font-size: 14px;
     line-height: 16px;
   }
-  .milestone_timeline h2{
+  .milestone_timeline h2 {
     font-size: 32px;
     line-height: 36px;
   }
-  .flyin_info{
+  .flyin_info {
     padding: 48px 24px;
   }
-  .appointment .nav-link{
+  .appointment .nav-link {
     padding: 12px 3px;
   }
-  .filter-input-box .appoinment-inputs{
+  .filter-input-box .appoinment-inputs {
     gap: 25px;
   }
-  .live-chat{
+  .live-chat {
     width: 506px;
   }
-  .chat-dr .dr-img{
+  .chat-dr .dr-img {
     width: 90px;
     height: 90px;
   }
-  .chat-header{
+  .chat-header {
     padding: 8px 16px;
+  }
+  .contact-head .contact-title {
+    margin-left: 50px;
   }
 }
 @media (max-width: 992px) {
@@ -61,14 +71,24 @@
   .surgery_main {
     margin-bottom: 30px;
   }
-  .tab-3-filter-input{
+  .tab-3-filter-input {
     padding: 0;
   }
-  .tab3-searchted-data .tab3-content{
-    grid-template-columns:repeat(2, 1fr)
+  .tab3-searchted-data .tab3-content {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .show-available , .appoint-card{
+  .show-available,
+  .appoint-card {
     padding: 0;
+  }
+  .contact-head .contact-title {
+    margin-left: 0px;
+  }
+  .billpay-form{
+    margin-top: -269px;
+  }
+  .bill-instruction{
+    max-width: 100%;
   }
 }
 @media (max-width: 991px) {
@@ -107,7 +127,7 @@
     opacity: 1;
     visibility: visible;
   }
-  
+
   .navbar .nav-link[aria-expanded="true"] + .sub-menu,
   .submenu_link[aria-expanded="true"] + .subsub-menu,
   .subsub_menu_link[aria-expanded="true"] + .innersub_menu {
@@ -123,55 +143,67 @@
   .subsub_menu_link[aria-expanded="true"] ~ .inner-down-arrow {
     transform: rotate(360deg);
   }
-  .submenu_link{
+  .submenu_link {
     display: block;
   }
-.navbar-collapse ,.sub-menu ,.subsub-menu ,.innersub_menu ,.navbar-collapse a{
-  background-color: #E5E5E5 !important;
-}
+  .navbar-collapse,
+  .sub-menu,
+  .subsub-menu,
+  .innersub_menu,
+  .navbar-collapse a {
+    background-color: #e5e5e5 !important;
+  }
 
-.navbar-collapse .nav-link {
-  padding: 12px;
-}
-.navbar-collapse{
-  overflow-y: auto;
-  max-height: 100vh;
-  position: absolute;
-  width: 100vw;
-  top: 100%;
-  left: 0;
-}
-.navbar-collapse a{
-  color: #000 !important;
-}
-.sub-menu li .submenu_link, .subsub_menu_link, .innersub_menu li .innermenu_link{
-  padding: 10px;
-}
-.sub-menu ,.subsub-menu ,.innersub_menu {
-  transform: translateY(0);
-  padding-left: 20px;
-}
-.nav-link-arrow{
-  display: block;
-}
-.sub-menu li {
-  border-bottom: none;
-}
-.navbar-nav{
-  padding-top: 22px;
-}
-.fadeout-grid{
-  grid-template-columns: repeat(2, 1fr);
- }
- .flydata_1 {
-  padding-top: 0;
-}
-.flydata_2 {
-  padding-top: 40px;
-}
-.filter-input-box .appoinment-inputs {
-  grid-template-columns: repeat(3, 1fr);
-}
+  .navbar-collapse .nav-link {
+    padding: 12px;
+  }
+  .navbar-collapse {
+    overflow-y: auto;
+    max-height: 100vh;
+    position: absolute;
+    width: 100vw;
+    top: 100%;
+    left: 0;
+  }
+  .navbar-collapse a {
+    color: #000 !important;
+  }
+  .sub-menu li .submenu_link,
+  .subsub_menu_link,
+  .innersub_menu li .innermenu_link {
+    padding: 10px;
+  }
+  .sub-menu,
+  .subsub-menu,
+  .innersub_menu {
+    transform: translateY(0);
+    padding-left: 20px;
+  }
+  .nav-link-arrow {
+    display: block;
+  }
+  .sub-menu li {
+    border-bottom: none;
+  }
+  .navbar-nav {
+    padding-top: 22px;
+  }
+  .fadeout-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .flydata_1 {
+    padding-top: 0;
+  }
+  .flydata_2 {
+    padding-top: 40px;
+  }
+  .filter-input-box .appoinment-inputs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .phone-holder a {
+    padding: 8px 11px;
+    margin:10px 0 20px 12px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -190,7 +222,7 @@
   .skill-title {
     max-width: 278px;
   }
-  .fadeout_title h2{
+  .fadeout_title h2 {
     font-size: 30px;
     line-height: 34px;
   }
@@ -205,19 +237,40 @@
   .skill-title {
     margin-top: 18px;
   }
-  .flyin_info h2{
+  .flyin_info h2 {
     font-size: 30px;
     line-height: 32px;
   }
-  .location-data{
+  .location-data {
     padding: 20px 8px 20px 20px;
   }
   .filter-input-box .appoinment-inputs {
     grid-template-columns: repeat(2, 1fr);
   }
-  .doc-info{
+  .doc-info {
     margin-bottom: 20px;
   }
+  .billpay-img{
+    text-align: center;
+  }
+  .billpay-form{
+ margin: 30px 0;
+    padding: 0;
+  }
+  .appointment .nav-link , .appointment .nav-item{
+    width: max-content;
+  }
+  .appointment .nav-link {
+    padding: 12px 15px;
+}
+.provider-logo{
+  left: calc(14% + 2px);
+}
+.speech-title h2 {
+  font-size: 32px;
+  line-height: 36px;
+}
+
 }
 @media (max-width: 640px) {
   .resumer_name h1 {
@@ -240,101 +293,137 @@
   .skills ul {
     flex-wrap: wrap;
   }
-  .milestone .milestone-left{
+  .milestone .milestone-left {
     width: 20%;
   }
-  .milestone{
+  .milestone {
     gap: 16px;
   }
-  .milestone-center{
+  .milestone-center {
     margin-right: 0;
     margin-left: 0;
   }
-  .milestone .milestone-right{
+  .milestone .milestone-right {
     width: 72%;
   }
 
-  .timeline-line{
+  .timeline-line {
     left: 26%;
   }
-  .milestone-right{
+  .milestone-right {
     font-size: 16px;
     line-height: 20px;
   }
-  .milestone-left{
+  .milestone-left {
     font-size: 24px;
     line-height: 26px;
   }
-  .milestone-end{
+  .milestone-end {
     text-align: start;
     padding-left: 50px;
   }
-  .fadeout-grid{
+  .fadeout-grid {
     grid-template-columns: repeat(1, 1fr);
-   }
-   .flyin_info {
+  }
+  .flyin_info {
     padding: 30px 18px;
+  }
+  .hero-content h2 {
+    font-size: 35px;
+    line-height: 38px;
+  }
+  .milestone-tab .nav-pills {
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .tab-main {
+    flex-direction: column;
+  }
+  .milestone-tab .nav-pills .nav-link {
+    border-bottom: 1px solid white;
+    border-right: none;
+  }
+  .milestone-tab .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    border-bottom-color: #d4ff9d;
+  }
+  .milestone-tab .tab-content {
+    padding: 0 20px;
+  }
+  .milestone_timeline h2 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .tab3-searchted-data .tab3-content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .tab-3-title h2 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .filter-input-box .appoinment-inputs {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+  .live-chat {
+    width: 356px;
+  }
+  .dr-detail {
+    padding-left: 10px;
+  }
+  .chat-dr .dr-img {
+    width: 81px;
+    height: 74px;
+  }
+  .chat-header {
+    padding: 8px 3px;
+  }
+  .chat-box .text-box {
+    height: 70px;
+  }
+  .chat-box .text-area {
+    height: 57px;
+  }
+  .right-img {
+    width: 15px;
+  }
+  .contact-form {
+    padding: 22px;
+  }
+  .topic-radio .btn{
+    width: 100%;
+    margin-left: 0;
+  }
+  .get-help-btn{
+    padding: 12px 30px 12px;;
+  }
+  .pay-bill-title h2 {
+    font-size: 26px;
+    line-height: 28px;
+  }
+  .tooltip-container {
+    left: auto;
+    right: 0;
+    transform: translateX(0);
+  }
+  .speech-content-body p{
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 23px;
+  }
+  .speech-title h2 {
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 30px;
 }
-.hero-content h2 {
-  font-size: 35px;
-  line-height: 38px;
 }
-.milestone-tab .nav-pills{
-  flex-direction: row !important;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.tab-main{
-  flex-direction: column;
-}
-.milestone-tab .nav-pills .nav-link{
-  border-bottom: 1px solid white;
-  border-right: none;
-}
-.milestone-tab .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-  border-bottom-color: #d4ff9d;
-}
-.milestone-tab .tab-content{
-  padding:0 20px;
-}
-.milestone_timeline h2{
-  font-size: 24px;
-  line-height: 26px;
-}
-.tab3-searchted-data .tab3-content {
-  grid-template-columns: repeat(1, 1fr);
-}
-.tab-3-title h2 {
-font-size: 22px;
-line-height: 24px;
-}
-.filter-input-box .appoinment-inputs {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 10px;
-}
-.live-chat {
-  width: 356px;
-}
-.dr-detail {
-  padding-left: 10px;
-}
-.chat-dr .dr-img {
-  width: 81px;
-  height: 74px;
-}
-.chat-header {
-  padding: 8px 3px;
-}
-.chat-box .text-box {
-  height: 70px;
-}
-.chat-box .text-area{
-  height: 57px;
-}
-.right-img{
-  width: 15px;
-}
+
+@media (max-width: 460px) {
+  .provider-logo{
+    left: calc(3% + 2px);
+  }
 }
 @media (max-width: 430px) {
   .resumer_image img {
@@ -345,21 +434,21 @@ line-height: 24px;
     font-size: 20px;
     line-height: 24px;
   }
-  .flyin_info h2{
+  .flyin_info h2 {
     font-size: 24px;
     line-height: 26px;
   }
   .chat-dr .dr-img {
     width: 74px;
     height: 74px;
-}
-.dr-detail h3 {
-  font-size: 16px;
-  line-height: 18px;
-}
-.chat-header{
-  min-height: 101px;
-}
+  }
+  .dr-detail h3 {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .chat-header {
+    min-height: 101px;
+  }
 }
 @media (max-width: 375px) {
   .resumer_name h1 {
@@ -381,10 +470,13 @@ line-height: 24px;
   }
   .live-chat {
     width: 324px;
-}
-.chat-submit .send-btn{
-  width: 84px;
-  height: 32px;
+  }
+  .chat-submit .send-btn {
+    width: 84px;
+    height: 32px;
+  }
+  .appointment .nav-link {
+    padding: 12px 9px;
 }
 }
 @media (max-width: 329px) {
@@ -394,9 +486,10 @@ line-height: 24px;
   }
   .live-chat {
     width: 291px;
-}
-.chat-dr .dr-img {
-  width: 76px;
-  height: 63px;
-}
+  }
+  .chat-dr .dr-img {
+    width: 76px;
+    height: 63px;
+  }
+ 
 }

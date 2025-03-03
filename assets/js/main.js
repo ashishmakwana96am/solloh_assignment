@@ -416,3 +416,122 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("chatClosed", "true");
   });
 });
+
+// ---contact form radio select hide show
+  document.addEventListener("DOMContentLoaded", function () {
+    const topicButtons = document.querySelectorAll(".topic-btn");
+    const hideDiv = document.querySelector(".hide-div");
+    const showDiv = document.querySelector(".show-div");
+    const selectLabel = document.querySelector(".select-label");
+    const changeLabel = document.querySelector(".change-label");
+    const changeSpan = document.querySelector(".change-span");
+
+    topicButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            // Hide input div with animation
+            hideDiv.classList.add("fade-out");
+            setTimeout(() => {
+                hideDiv.style.display = "none";
+            }, 500);
+
+            // Show details div with animation
+            showDiv.style.display = "block";
+            setTimeout(() => {
+                showDiv.classList.add("fade-in");
+            }, 10);
+
+            // Hide "Select a topic" and show "Topic Change"
+            selectLabel.style.display = "none";
+            changeLabel.style.display = "block";
+
+            // Hide all topic buttons except the selected one
+            topicButtons.forEach(btn => {
+              if (btn === button) {
+                  btn.style.display = "inline";
+                  btn.style.marginLeft = "0";
+                  btn.style.outline = "none"
+              } else {
+                  btn.style.display = "none";
+              }
+          });
+          
+        });
+    });
+
+    changeSpan.addEventListener("click", function () {
+        // Hide details div with animation
+        showDiv.classList.remove("fade-in");
+        setTimeout(() => {
+            showDiv.style.display = "none";
+        }, 500);
+
+        // Show input div with animation
+        hideDiv.style.display = "block";
+        setTimeout(() => {
+            hideDiv.classList.remove("fade-out");
+        }, 10);
+
+        // Show all topic buttons
+        topicButtons.forEach(btn => {
+            btn.style.display = "inline";
+        });
+
+        // Show "Select a topic" and hide "Topic Change"
+        selectLabel.style.display = "block";
+        changeLabel.style.display = "none";
+    });
+  });
+
+  // --bill pay input field
+  document.addEventListener("DOMContentLoaded", function () {
+    const billInput = document.getElementById("link_id");
+    const dobInput = document.querySelector("input[name='dob']");
+
+    // Function for formatting Bill ID
+    billInput.addEventListener("input", function (e) {
+        let value = this.value.replace(/\D/g, ""); 
+        if (value.length > 12) value = value.slice(0, 12);
+        let formattedValue = value.replace(/(\d{4})(\d{4})?(\d{4})?/, function (_, p1, p2, p3) {
+            return [p1, p2, p3].filter(Boolean).join(" - ");
+        });
+        this.value = formattedValue;
+    });
+
+    // Function for formatting Date of Birth
+    dobInput.addEventListener("input", function (e) {
+        let value = this.value.replace(/\D/g, ""); 
+        if (value.length > 8) value = value.slice(0, 8);
+        let formattedValue = value.replace(/(\d{2})(\d{2})?(\d{4})?/, function (_, p1, p2, p3) {
+            return [p1, p2, p3].filter(Boolean).join("/");
+        });
+        this.value = formattedValue;
+    });
+});
+
+
+// ---text to speech --
+const playButton = document.getElementById("playButton");
+  let isPlaying = false;
+  let speechSynthesisInstance = window.speechSynthesis;
+  let utterance = new SpeechSynthesisUtterance();
+
+  playButton.addEventListener("click", () => {
+    if (!isPlaying) {
+      let textContent = document.querySelector(".speech-content-body").innerText;
+      utterance.text = textContent;
+      utterance.lang = "en-US";
+      utterance.rate = 1;
+      utterance.volume = 1;
+      
+      speechSynthesisInstance.speak(utterance);
+      isPlaying = true;
+      playButton.classList.remove("fa-circle-play");
+      playButton.classList.add("fa-pause");
+    } else {
+      speechSynthesisInstance.cancel();
+      isPlaying = false;
+      playButton.classList.remove("fa-pause");
+      playButton.classList.add("fa-circle-play");
+    }
+  });
+
