@@ -2699,3 +2699,13 @@ position: relative;
   font-weight: 600;
 }
 /* ---text- to --speech-end */
+
+/* --vertual tour-start */
+.vertual-tour{
+  margin-bottom: 50px;
+}
+.vertual-tour iframe {
+  height:calc(60vh - 4px);
+  width: 100%;
+}
+/* --vertual tour-end */
