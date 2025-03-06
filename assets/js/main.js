@@ -536,3 +536,51 @@ const playButton = document.getElementById("playButton");
   });
 
 
+  // --live chat ui
+  document.addEventListener("DOMContentLoaded", function () {
+    const textArea = document.querySelector(".text-area");
+    const sendBtn = document.querySelector(".send-btn");
+    const chatBody = document.querySelector(".dialog-body");
+
+    function appendMessage(user, message) {
+        const chatMessage = document.createElement("div");
+        chatMessage.classList.add("chat-msj", user === "You" ? "customer" : "expert");
+        
+        if (user === "You") {
+            chatMessage.innerHTML = `
+                <div class="content">
+                    <span class="user-name">${user}</span>
+                    <div class="chat-text-msj">${message}</div>
+                </div>
+            `;
+        } else {
+            chatMessage.innerHTML = `
+                <img src="assets/images/chatadmin.png" alt="" class="chat-user-img">
+                <div class="chat-content">
+                    <span class="user-name">Pearl Chatbot, Expert's Assistant</span>
+                    <div class="chat-text-msj">${message}</div>
+                </div>
+            `;
+        }
+        
+        chatBody.appendChild(chatMessage);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    sendBtn.addEventListener("click", function () {
+        const userMessage = textArea.value.trim();
+        if (userMessage !== "") {
+            appendMessage("You", userMessage);
+            textArea.value = "";
+
+            // Simulating chatbot response after a delay
+            setTimeout(() => {
+                const botResponse = "I am here to assist you!"; // Static response, replace with API call if needed
+                appendMessage("Bot", botResponse);
+            }, 1000);
+        }
+    });
+});
+
+
+// AIzaSyBj_fLuf_xNvojeVE-ptrOlgpGXjfYXBW8---api key
