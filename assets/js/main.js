@@ -508,7 +508,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 // ---text to speech --
 const playButton = document.getElementById("playButton");
   let isPlaying = false;
@@ -535,52 +534,101 @@ const playButton = document.getElementById("playButton");
     }
   });
 
-
   // --live chat ui
-  document.addEventListener("DOMContentLoaded", function () {
-    const textArea = document.querySelector(".text-area");
-    const sendBtn = document.querySelector(".send-btn");
-    const chatBody = document.querySelector(".dialog-body");
 
-    function appendMessage(user, message) {
-        const chatMessage = document.createElement("div");
-        chatMessage.classList.add("chat-msj", user === "You" ? "customer" : "expert");
-        
-        if (user === "You") {
-            chatMessage.innerHTML = `
-                <div class="content">
-                    <span class="user-name">${user}</span>
-                    <div class="chat-text-msj">${message}</div>
-                </div>
-            `;
-        } else {
-            chatMessage.innerHTML = `
-                <img src="assets/images/chatadmin.png" alt="" class="chat-user-img">
-                <div class="chat-content">
-                    <span class="user-name">Pearl Chatbot, Expert's Assistant</span>
-                    <div class="chat-text-msj">${message}</div>
-                </div>
-            `;
-        }
-        
-        chatBody.appendChild(chatMessage);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  const textArea = document.querySelector(".text-area");
+  const sendBtn = document.querySelector(".send-btn");
+  const chatBody = document.querySelector(".dialog-body");
 
-    sendBtn.addEventListener("click", function () {
-        const userMessage = textArea.value.trim();
-        if (userMessage !== "") {
-            appendMessage("You", userMessage);
-            textArea.value = "";
+  function appendMessage(user, message) {
+      const chatMessage = document.createElement("div");
+      chatMessage.classList.add("chat-msj", user === "You" ? "customer" : "expert");
 
-            // Simulating chatbot response after a delay
-            setTimeout(() => {
-                const botResponse = "I am here to assist you!"; // Static response, replace with API call if needed
-                appendMessage("Bot", botResponse);
-            }, 1000);
-        }
-    });
+      if (user === "You") {
+          chatMessage.innerHTML = `
+              <div class="content">
+                  <span class="user-name">${user}</span>
+                  <div class="chat-text-msj">${message}</div>
+              </div>
+          `;
+      } else {
+          chatMessage.innerHTML = `
+              <img src="assets/images/chatadmin.png" alt="" class="chat-user-img">
+              <div class="chat-content">
+                  <span class="user-name">Pearl Chatbot, Expert's Assistant</span>
+                  <div class="chat-text-msj">${message}</div>
+              </div>
+          `;
+      }
+
+      chatBody.appendChild(chatMessage);
+      chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  async function fetchDialogflowResponse(userMessage) {
+      const accessToken = await getAccessToken();
+      const projectId = "bottest-bdhg"; 
+      const sessionId = "123456"; 
+      const url = `https://dialogflow.googleapis.com/v2/projects/${projectId}/agent/sessions/${sessionId}:detectIntent`;
+
+      const response = await fetch(url, {
+          method: "POST",
+          headers: {
+              "Authorization": `Bearer ${accessToken}`,
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              queryInput: {
+                  text: {
+                      text: userMessage,
+                      languageCode: "en-US"
+                  }
+              }
+          })
+      });
+
+      const data = await response.json();
+      return data.queryResult.fulfillmentText || "Sorry, I didn't understand that.";
+  }
+
+  async function getAccessToken() {
+      const header = {
+          alg: "RS256",
+          typ: "JWT"
+      };
+
+      const now = Math.floor(Date.now() / 1000);
+      const payload = {
+          iss: "dialogflow@bottest-bdhg.iam.gserviceaccount.com",
+          scope: "https://www.googleapis.com/auth/cloud-platform",
+          aud: "https://oauth2.googleapis.com/token",
+          exp: now + 3600,
+          iat: now
+      };
+
+      const privateKey = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCXX/G4yEc2r6jr\nAaOW6yh13CbyQS7U5Uvkq1TsCAC9eAJsZuWd/xehO++fvVszOGzmpxsKbQ3luV7H\nxz6jo+LoB6w3NZtQ8wyp56NsIwI0I84timqfXcAjwtuwytmTCE83LojbI9PyzWdu\nZY3or+4QsuNEmugohzkqvrEQMgNdbBfIJmVJsN0LntwqYLN7Zlrs/WiUrqkLXoXV\nlh6YXBzducXMtKQ6nKheaJ5b6IcJgOQv1G2uzvx25BBcEVWIyTQ6jUf1jN0xLclb\nqbL7bmj5IAsKTQxybS0dkEUxnJZvgBBXJg8lLQ+CDjlx06kXfQfjLOTLbMRq+AA1\nNPO9N2CjAgMBAAECggEAOshBvFFdwiE1lcjlp2H7LMWIhDOGxZqjPZHA4QV8kBbt\nzf2pNhEMsoptU5k7NKk5NNp4eDSAHJC++xJmwzINl6//EtNo1GcFqGbwwbnYjbnH\nw0yIegl0Zw6wtDcZhWzJIjMaZwrDL/rOqwKZuF21M1vcQFRtSeu06eHyLUlWoCyU\nInH9JD9tZmdbH3/tV23i7YeCx/ysVUwdU4wUuMRAvqNyh8XYecVOe7zIMtn2uBqT\npBSQBZHb1BxNOL84XHqWXs0BBSLLuDibUPvV6553UR2kvLN3SiiSRIWSpxjImD1L\n+5zmtKPOniEnXySlpgDvf1cxsd/2Mi0snJAuJmYNNQKBgQDJtW08DpLnhldvILJX\ngTNLo0A8MlinWmMeAXvMBcWGA3+tlEo8bZ8sVt6gsmtopkdlOU4evtA8lpLj8dl8\nfhHd6br0hindqEXf5A2CmWmO3u4B23EAk+Zcx0lasqb/HkgL/TULuj/MR/QvqMed\nwBBsZEotVofFBRL3lLyDiP1t9wKBgQDAHkzUDDsPBGdfnD4BXwE6at1DkL/QwQG8\nj16i78QqxzaWWYQ4QUvNaEzba183muyQ9Qs9IvIi6e1iLjYBg0aCqFJ/B63KELYF\n+AiY5x4YlCxGAdZ9IPvT1OXjixnyqf8vh/VJCBINInR5kc1VLI5vr3G09164+P2g\nGZbvefgntQKBgC6rHlHl4VFWAMbCXuDmELMwWz1SPLbDr+kSWM00jKXcC19izuY6\nSrichLfTcAxvZFdkMdHlPhK2l9fLbhFircmVOV8351nUhA4wGnwb+JNIuvKNDhEf\nJw5SQYONkBu4qtyzQeGrvvUJtNKOD1lNRb9+WLcyrQkFioTj0dXxDQmzAoGAQfml\n1KQmm++dOF5FhN8FYvRT6+IHnT7Kw+BQVZAVQ8OJ4XP4TgFOcMnCqw9icYwIdXdR\nVrtrf8XpuW+5KCfWzQPU4L7YVa4LdF1LRocH9NTdp2T2LZ5oHMTd9ZhNXuI2OjJs\nb5oP6ObOLPl/FCLq/zu2xri0lL0dDB/9j1vJdokCgYEAvwRRIn26J+AHKFPCJ+Fu\nZYpIa9H61bqr9D0KDB10QBxV93ZC/IkwaOCqunNWccbeIMLbMyelGK6eDBXVKmYZ\nqeovjfgnglQ9VH7+Fzo1KmVDZr8Fx2rXrdVTSdDiPvUykR5bTX9wSR88O4sDVe+9\nDrQbHsUC1NyS54Xw/lzCPf4=\n-----END PRIVATE KEY-----\n";
+
+      const jwt = KJUR.jws.JWS.sign("RS256", JSON.stringify(header), JSON.stringify(payload), privateKey);
+
+      let response = await fetch("https://oauth2.googleapis.com/token", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer", assertion: jwt })
+      });
+
+      let data = await response.json();
+      return data.access_token;
+  }
+
+  sendBtn.addEventListener("click", async function () {
+      const userMessage = textArea.value.trim();
+      if (userMessage !== "") {
+          appendMessage("You", userMessage);
+          textArea.value = "";
+
+          const botResponse = await fetchDialogflowResponse(userMessage);
+          appendMessage("Bot", botResponse);
+      }
+  });
 });
-
-
-// AIzaSyBj_fLuf_xNvojeVE-ptrOlgpGXjfYXBW8---api key

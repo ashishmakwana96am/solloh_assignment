@@ -1740,7 +1740,7 @@ textarea:focus {
   overflow-y: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: none;
-  z-index: 9999;
+  z-index: 9;
 }
 
 #searchResults li {
@@ -1977,7 +1977,7 @@ select:focus,
   background: #fff;
   border: 1px solid #ddd;
   width: 100%;
-  z-index: 1000;
+  z-index: 10;
 }
 .autocomplete-item {
   padding: 8px;
@@ -2001,7 +2001,7 @@ select:focus,
   bottom: 5%;
   right: 5%;
   width: 686px;
-  z-index: 99999;
+  z-index: 999;
   transform: translateY(100%);
   opacity: 0;
   visibility: hidden;
@@ -2301,6 +2301,7 @@ select:focus,
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 }
 
 .chat-icon img {
